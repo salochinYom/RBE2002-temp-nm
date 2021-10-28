@@ -8,12 +8,12 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "D:/nmoy libraries/Documents/PlatformIO/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/include",
-                "D:/nmoy libraries/Documents/PlatformIO/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/src",
+                "D:/Github/RBE2002-team4-temp-NM/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/include",
+                "D:/Github/RBE2002-team4-temp-NM/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/src",
                 "D:/nmoy libraries/Documents/PlatformIO/lib/RBE-200n-lib/src",
                 "C:/Users/nrmoy/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
-                "D:/nmoy libraries/Documents/PlatformIO/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/.pio/libdeps/esp32dev/ESP32Encoder/src",
-                "D:/nmoy libraries/Documents/PlatformIO/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/.pio/libdeps/esp32dev/ESP32Servo/src",
+                "D:/Github/RBE2002-team4-temp-NM/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/.pio/libdeps/esp32dev/ESP32Encoder/src",
+                "D:/Github/RBE2002-team4-temp-NM/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/.pio/libdeps/esp32dev/ESP32Servo/src",
                 "C:/Users/nrmoy/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                 "C:/Users/nrmoy/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                 "C:/Users/nrmoy/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
@@ -110,12 +110,12 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "D:/nmoy libraries/Documents/PlatformIO/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/include",
-                    "D:/nmoy libraries/Documents/PlatformIO/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/src",
+                    "D:/Github/RBE2002-team4-temp-NM/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/include",
+                    "D:/Github/RBE2002-team4-temp-NM/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/src",
                     "D:/nmoy libraries/Documents/PlatformIO/lib/RBE-200n-lib/src",
                     "C:/Users/nrmoy/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
-                    "D:/nmoy libraries/Documents/PlatformIO/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/.pio/libdeps/esp32dev/ESP32Encoder/src",
-                    "D:/nmoy libraries/Documents/PlatformIO/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/.pio/libdeps/esp32dev/ESP32Servo/src",
+                    "D:/Github/RBE2002-team4-temp-NM/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/.pio/libdeps/esp32dev/ESP32Encoder/src",
+                    "D:/Github/RBE2002-team4-temp-NM/Projects/rbe-200n-skeleton-code/week01/lab01-maxbotix-demo/.pio/libdeps/esp32dev/ESP32Servo/src",
                     "C:/Users/nrmoy/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                     "C:/Users/nrmoy/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                     "C:/Users/nrmoy/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
