@@ -16,29 +16,33 @@
 
 #include <Arduino.h>
 #include <SPI.h>
-#include <Rangefinder.h>
+#include <Sharp.h>
+#include <Timer.h>
+
+Sharp IR;
+
+Timer printTimer(50);
 
 //#include <MaxBotix.h>
 
-Rangefinder ultrasonic;
 
 void setup()
 {
   delay(1000);
-  ultrasonic.attach(SIDE_ULTRASONIC_TRIG, SIDE_ULTRASONIC_ECHO);
   Serial.begin(115200);
   Serial.println("Velkommen til"); //welcome in german
+  IR.init();
 
 }
 
 void loop() 
 {
-  if(ultrasonic.newReading) 
+  if(printTimer.isExpired()) 
   {
-    int time = ultrasonic.getRoundTripTimeMicroSeconds();
-    Serial.print(time);
+    uint16_t ADCreading = IR.readMCP3002(true);
+    Serial.print(ADCreading);
     Serial.print(',');
-    Serial.print((time - 429)/46.9); //TODO: change this line to output distance in cm
+    Serial.print(0); //TODO: change this line to output distance in cm
     Serial.println(',');
   }
 }
