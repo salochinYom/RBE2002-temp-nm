@@ -2,7 +2,11 @@
 #include <filter.h>
 
 void filter::transferlist(){
-    mathop[] = running[];
+    for (int i = 0; i < listleng; i++) //sum the list
+    {
+        mathop[i] = running[i];
+    }
+
 }
 
 void filter::sortMathop(){
@@ -53,9 +57,5 @@ float filter::getAvg(){
     {
         sum += mathop[i];
     }
-    return sum/(listleng + 1); //returns avg
-
-
-
-    
+    return sum/(listleng + 1); //returns avg    
 }

@@ -17,10 +17,12 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <Rangefinder.h>
+#include <filter.h>
 
 //#include <MaxBotix.h>
 
 Rangefinder ultrasonic;
+filter Filter;
 
 void setup()
 {
@@ -36,9 +38,17 @@ void loop()
   if(ultrasonic.newReading) 
   {
     int time = ultrasonic.getRoundTripTimeMicroSeconds();
+    float dist = (time - 429)/46.9;
+    Filter.addSample(dist);
+    float avg = Filter.getAvg();
+    float median = Filter.getMedian();
     Serial.print(time);
     Serial.print(',');
-    Serial.print((time - 429)/46.9); //TODO: change this line to output distance in cm
+    Serial.print(dist); //TODO: change this line to output distance in cm
+    Serial.print(',');
+    Serial.print(avg);
+    Serial.print(',');
+    Serial.print(median);
     Serial.println(',');
   }
 }
