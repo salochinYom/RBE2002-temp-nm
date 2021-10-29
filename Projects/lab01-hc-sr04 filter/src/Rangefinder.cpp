@@ -81,8 +81,8 @@ void Rangefinder::sensorISR() {
 		roundTripTime = micros() - startTime;
 		forceFire = true;
 	}
-	portEXIT_CRITICAL(&synch);
 	newReading = true;
+	portEXIT_CRITICAL(&synch);
 }
 void Rangefinder::attach(int trigger, int echo) {
 	triggerPin = trigger;
@@ -128,8 +128,8 @@ long Rangefinder::getRoundTripTimeMicroSeconds() {
 	long time;
 	portENTER_CRITICAL(&synch);
 	time=roundTripTime;
-	portEXIT_CRITICAL(&synch);
 	newReading = false; //when the value was read
+	portEXIT_CRITICAL(&synch);
 	return time;
 }
 /*
