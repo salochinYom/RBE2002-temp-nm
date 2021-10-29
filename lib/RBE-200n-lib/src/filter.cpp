@@ -50,7 +50,7 @@ float filter::getMedian(){
 float filter::getAvg(){
     transferlist(); //move running into mathop
     float sum = 0; //sum number
-    for (int i = 0; i < listleng; i++) //sum the list
+    for (int i = 0; i <= listleng; i++) //sum the list
     {
         sum += mathop[i];
     }
