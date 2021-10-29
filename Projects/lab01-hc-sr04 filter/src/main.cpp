@@ -16,10 +16,8 @@
 
 #include <Arduino.h>
 #include <SPI.h>
-#include <Rangefinder.h>
-#include <filter.h>
-
-//#include <MaxBotix.h>
+#include "Rangefinder.h"
+#include "filter.h"
 
 Rangefinder ultrasonic;
 filter Filter;

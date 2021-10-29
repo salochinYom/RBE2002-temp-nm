@@ -11,20 +11,17 @@ void filter::transferlist(){
 
 void filter::sortMathop(){
     int loc = 0; //keeps of pos in list
-    int mLoc = 0; //keeps track of largest pos has gotten to
     while(loc < listleng)//while sorting
     {
         if(mathop[loc] <= mathop[loc + 1]) //if current is less than next
         {
-            mLoc += 1; //increment up
-            loc = mLoc;
+            ++loc;
         }
         else
         {
             float lowerVal = mathop[loc + 1]; //store values to switch
-            float upperVal = mathop[loc];
+            mathop[loc + 1] = mathop[loc];
             mathop[loc] = lowerVal; //write values
-            mathop[loc + 1] = upperVal;
             loc -= 1; //increment down
             if(loc <= -1)
             {
