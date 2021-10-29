@@ -1,20 +1,20 @@
-#include <Sharp.h>
-#include <Arduino.h>
-#include <SPI.h>
+#include <SharpIR.h>
 
+SharpIR ir1;
 
-void Sharp::init()
+SharpIR::SharpIR() {}
+
+void SharpIR::init()
 {
-        //SPI to talk to the MCP3002
+    //SPI to talk to the MCP3002
     SPI.begin(); //defaults to VPSI: SCK, MISO, MOSI, SS; see above
     pinMode(SS, OUTPUT); //need to set the CS to OUTPUT
 }
 
-
-uint16_t Sharp::readMCP3002(bool force)
+uint16_t SharpIR::readMCP3002(bool force)
 {
     uint16_t retVal = 0;
-    if((millis() - lastADCread >= 50) || force)
+    if((millis() - lastADCread >= ADC_PERIOD) || force)
     {
         lastADCread = millis();
 
@@ -41,7 +41,20 @@ uint16_t Sharp::readMCP3002(bool force)
         SPI.endTransaction(); 
 
         retVal = ADCvalue;
+        state &= ~ADC_READ;
     }
 
     return retVal;
+}
+
+// TODO: get correct transfer function
+bool SharpIR::getDistance(float& distance) {
+    // //transfer function: 0.798* + -1.22
+    uint16_t adcReading = ir1.readMCP3002(false); //gets adc reading
+    if(!(state & ADC_READ)){ 
+        distance = (adcReading + 1.22)/0.798;
+        state |= ADC_READ; //sets value to we have read or true.
+        return true;
+    }
+    return false;
 }

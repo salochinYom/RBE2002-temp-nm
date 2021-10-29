@@ -16,31 +16,23 @@
 
 #include <Arduino.h>
 #include <SPI.h>
-#include <Sharp.h>
-#include <Timer.h>
+#include <SharpIR.h>
+// #include <Timer.h>
 
-Sharp IR;
-
-Timer printTimer(50);
-
-//#include <MaxBotix.h>
-#include<filter.h>
-
+// Timer printTimer(50);
 
 void setup()
 {
   delay(1000);
   Serial.begin(115200);
   Serial.println("Velkommen til"); //welcome in german
-  IR.init();
-
 }
 
 void loop() 
 {
-  if(printTimer.isExpired()) 
+  uint16_t ADCreading = ir1.readMCP3002();
+  if(ADCreading) 
   {
-    uint16_t ADCreading = IR.readMCP3002(true);
     Serial.print(ADCreading);
     Serial.print(',');
     Serial.print(0); //TODO: change this line to output distance in cm
