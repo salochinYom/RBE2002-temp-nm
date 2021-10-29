@@ -120,6 +120,8 @@ uint16_t MaxBotix::readMCP3002(bool force)
         SPI.endTransaction(); 
 
         retVal = ADCvalue;
+        //sets state of ADC_READ to 0/False
+        state &= ~ADC_READ;
     }
 
     return retVal;
@@ -165,12 +167,21 @@ void MaxBotix::MB_ISR(void)
  * getDistance should return true whenever there is a new reading, and put the result
  * in distance, which is _passed by reference_ so that you can "return" a value
  */
-//uses ADC values
+//uses ADC values. if some other function has read from this and this one hasn't this function will still return true
 bool MaxBotix::getDistance(float& distance)
 {
-    // uint16_t adcReading = mb_ez1.readMCP3002(true);
     // //transfer function: 0.798* + -1.22
+    uint16_t adcReading = mb_ez1.readMCP3002(false); //gets adc reading
+    if(!(state & ADC_READ)){ //if the value is non zero then it is true
+        distance = (adcReading + 1.22)/0.798;
+        state |= ADC_READ; //sets value to we have read or true.
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 
-    distance = -99;
-    return false;
+    // distance = -99;
+    // return false;
 }
