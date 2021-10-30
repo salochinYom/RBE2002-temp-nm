@@ -2,7 +2,7 @@
 #include <filter.h>
 
 void filter::transferlist(){
-    for (int i = 0; i < listleng; i++) //sum the list
+    for (int i = 0; i <= listleng; i++) //sum the list
     {
         mathop[i] = running[i];
     }

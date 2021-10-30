@@ -22,13 +22,16 @@
 Rangefinder ultrasonic;
 filter Filter;
 
+unsigned long startTime = 0;
+
 void setup()
 {
   delay(1000);
   ultrasonic.attach(SIDE_ULTRASONIC_TRIG, SIDE_ULTRASONIC_ECHO);
   Serial.begin(115200);
-  Serial.println("Velkommen til"); //welcome in german
+  Serial.println("Velkommen til"); //welcome in norwegian
 
+  startTime = millis();
 }
 
 void loop() 
@@ -36,11 +39,11 @@ void loop()
   if(ultrasonic.newReading) 
   {
     int time = ultrasonic.getRoundTripTimeMicroSeconds();
-    float dist = (time - 429)/46.9;
+    float dist = (time - 436)/59.2 + 8.5;
     Filter.addSample(dist);
     float avg = Filter.getAvg();
     float median = Filter.getMedian();
-    Serial.print(time);
+    Serial.print(millis() - startTime);
     Serial.print(',');
     Serial.print(dist); //TODO: change this line to output distance in cm
     Serial.print(',');
