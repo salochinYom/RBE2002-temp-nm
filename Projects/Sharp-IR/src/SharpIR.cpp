@@ -21,7 +21,7 @@ uint16_t SharpIR::readMCP3002(bool force)
         // This will command the MCP to take a reading on CH0
         //0x7800 ch1 0x6800 ch0
         // Figure 6.1 of the datasheet shows the bit arrangement
-        uint16_t cmdByte = 0x7800; 
+        uint16_t cmdByte = 0x6800; 
 
         //start the SPI session
         SPISettings spiSettings; //defaults to (clk freq = 1000000, MSBFIRST, SPI_MODE0), which is what we want
@@ -49,10 +49,11 @@ uint16_t SharpIR::readMCP3002(bool force)
 
 // TODO: get correct transfer function
 bool SharpIR::getDistance(float& distance) {
-    // //transfer function: 0.798* + -1.22
+    // old transfer function: 4396*1/d + 133
+    // new transfer function: 6194*1/d + 87.4 (after removing 5cm data points)
     uint16_t adcReading = ir1.readMCP3002(false); //gets adc reading
     if(!(state & ADC_READ)){ 
-        distance = (adcReading + 1.22)/0.798;
+        distance = 6194.0/(adcReading - 87.4);
         state |= ADC_READ; //sets value to we have read or true.
         return true;
     }

@@ -26,16 +26,21 @@ void setup()
   delay(1000);
   Serial.begin(115200);
   Serial.println("Velkommen til"); //welcome in german
+  ir1.init();
 }
 
 void loop() 
 {
-  uint16_t ADCreading = ir1.readMCP3002();
-  if(ADCreading) 
-  {
-    Serial.print(ADCreading);
-    Serial.print(',');
-    Serial.print(0); //TODO: change this line to output distance in cm
-    Serial.println(',');
+  // uint16_t ADCreading = ir1.readMCP3002();
+  // if(ADCreading) 
+  // {
+  //   Serial.print(ADCreading);
+  //   Serial.print(',');
+  //   Serial.print(0); //TODO: change this line to output distance in cm
+  //   Serial.println(',');
+  // }
+  float distance = 0;
+  if (ir1.getDistance(distance)) {
+    Serial.println(distance);
   }
 }
