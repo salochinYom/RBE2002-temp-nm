@@ -24,10 +24,11 @@ Rangefinder ultrasonic;
 
 void setup()
 {
-  delay(1000);
-  ultrasonic.attach(SIDE_ULTRASONIC_TRIG, SIDE_ULTRASONIC_ECHO);
+  //delay(1000);
   Serial.begin(115200);
   Serial.println("Velkommen til"); //welcome in german
+  ultrasonic.attach(SIDE_ULTRASONIC_TRIG, SIDE_ULTRASONIC_ECHO);
+
 
 }
 
@@ -38,7 +39,7 @@ void loop()
     int time = ultrasonic.getRoundTripTimeMicroSeconds();
     Serial.print(time);
     Serial.print(',');
-    Serial.print((time - 429)/46.9); //TODO: change this line to output distance in cm
+    Serial.print((time - 436)/59.2); //TODO: change this line to output distance in cm
     Serial.println(',');
   }
 }
