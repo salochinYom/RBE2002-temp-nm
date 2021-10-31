@@ -4,10 +4,12 @@
 void wallFollowingController::processDistanceReading(float distance)
 {
     float error = targetDistance - distance;
-    float effort = pidwallFollowing.CalcEffort(error);
+    float effort = pidwallFollowing.CalcEffort(error); //gets effort in cm/s
 
-    leftSpeed = speed * (1 - effort);
-    rightSpeed = speed * (1 + effort);
+
+    //there is a better way of doing this.
+    leftSpeed = ((speed * (1 + effort)) * 360 )/(pi * WheeldiameterCM);
+    rightSpeed = ((speed * (1 - effort))* 360 )/(pi * WheeldiameterCM);
 
     Serial.print(targetDistance);
     Serial.print('\t');
@@ -36,10 +38,10 @@ void wallFollowingController::handleKeyPress(int16_t key)
             break;
 
         case NUM_0:
-            targetDistance = 0;
+            targetDistance = 17;
             break;
         case NUM_1:
-            targetDistance = 10;
+            targetDistance = 17;
             break;
         case NUM_2:
             targetDistance = 20;

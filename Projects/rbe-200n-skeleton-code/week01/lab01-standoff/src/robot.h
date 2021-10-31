@@ -1,4 +1,5 @@
 #include <Chassis.h>
+#include <wallfollowing.h>
 
 #include "standoff.h"
 

@@ -5,14 +5,19 @@ class wallFollowingController
 public:
     float leftSpeed = 0;
     float rightSpeed = 0;
+    float targetDistance = 20;
+    
+private:
+    float pi = 3.14;
+    double WheeldiameterCM = 6.9; //nice
+
 
 protected:
-    float targetDistance = 10;
     float speed = 25;
 
     PIDController pidwallFollowing;
     public:
-    wallFollowingController(void) : pidwallFollowing(1, 0, 0) {} //TODO: edit gains
+    wallFollowingController(void) : pidwallFollowing(0.005, 0.0005, 0.00025, 0.25) {} //TODO: edit gains
 
     void processDistanceReading(float distance);
     void handleKeyPress(int16_t key);

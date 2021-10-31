@@ -51,6 +51,9 @@ void Robot::handleIRPress(int16_t key)
             if(key == PREV)
             {
                 robotState = ROBOT_WALL_FOLLOWING;
+                float distanceReading = 0;
+                bool hasNewReading = mb_ez1.getDistance(distanceReading);
+                WallFollowingController.targetDistance = distanceReading;
             }
             break;
         case ROBOT_STANDOFF:
@@ -82,7 +85,7 @@ void Robot::handleNewDistanceReading(float distanceReading)
         // Uncomment this to run
         chassis.setMotorEfforts(standoffController.leftEffort, standoffController.rightEffort);
     }   
-    else if(robotState == ROBOT_STANDOFF)
+    else if(robotState == ROBOT_WALL_FOLLOWING)
     {
         WallFollowingController.processDistanceReading(distanceReading);
         // Uncomment this to run
