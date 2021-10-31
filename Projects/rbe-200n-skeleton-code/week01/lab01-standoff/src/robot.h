@@ -12,6 +12,7 @@ class Robot
 protected:
     //WallFollower wallFollower;
     StandoffController standoffController;
+    wallFollowingController WallFollowingController;
 
     enum ROBOT_STATE {ROBOT_IDLE, ROBOT_WALL_FOLLOWING, ROBOT_STANDOFF};
     ROBOT_STATE robotState = ROBOT_IDLE;

@@ -56,7 +56,11 @@ void Robot::handleIRPress(int16_t key)
         case ROBOT_STANDOFF:
             standoffController.handleKeyPress(key);
             break;
-        //TODO: Add case for wall following
+
+        case ROBOT_WALL_FOLLOWING:
+            WallFollowingController.handleKeyPress(key);
+            break;
+            
         default:
             break;
     }
@@ -77,6 +81,12 @@ void Robot::handleNewDistanceReading(float distanceReading)
         standoffController.processDistanceReading(distanceReading);
         // Uncomment this to run
         chassis.setMotorEfforts(standoffController.leftEffort, standoffController.rightEffort);
+    }   
+    else if(robotState == ROBOT_STANDOFF)
+    {
+        WallFollowingController.processDistanceReading(distanceReading);
+        // Uncomment this to run
+        chassis.setWheelSpeeds(WallFollowingController.leftSpeed, WallFollowingController.rightSpeed);
     }   
 
     Serial.print('\n');
