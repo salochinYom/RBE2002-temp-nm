@@ -9,18 +9,18 @@ void StandoffController::processDistanceReading(float distance)
     leftEffort = effort;
     rightEffort = effort;
 
-    // Serial.print(targetDistance);
-    // Serial.print('\t');
-    // Serial.print(distance);
-    // Serial.print('\t');
-    // Serial.print(error);
-    // Serial.print('\t');
-    // Serial.print(effort);
-    // Serial.print('\t');
-    // Serial.print(leftEffort);
-    // Serial.print('\t');
-    // Serial.print(rightEffort);
-    // Serial.print('\t');
+    Serial.print(targetDistance);
+    Serial.print('\t');
+    Serial.print(distance);
+    Serial.print('\t');
+    Serial.print(error);
+    Serial.print('\t');
+    Serial.print(effort);
+    Serial.print('\t');
+    Serial.print(leftEffort);
+    Serial.print('\t');
+    Serial.print(rightEffort);
+    Serial.print('\t');
 }
 
 void StandoffController::handleKeyPress(int16_t key)
