@@ -172,10 +172,10 @@ void MaxBotix::MB_ISR(void)
 bool MaxBotix::getDistance(float& distance)
 {
     // //transfer function: 0.798* + -1.22
-    uint16_t pulseLen = mb_ez1.checkEcho(); //gets adc reading
     if((state & ECHO_RECD)){ //if the value is non zero then it is true
-        distance = pulseLen; //(adcReading + 1.22)/0.798;
-        state &= ~ECHO_RECD; //sets value to we have read/false
+        uint16_t pulseLen = mb_ez1.checkEcho(); //gets pulse length reading
+        distance = (pulseLen + 46.5)/57.6; //(adcReading + 1.22)/0.798;
+        // state &= ~ECHO_RECD; //sets value to we have read/false
         return true;
     }
     else

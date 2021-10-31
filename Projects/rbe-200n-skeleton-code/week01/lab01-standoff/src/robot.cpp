@@ -76,7 +76,7 @@ void Robot::handleNewDistanceReading(float distanceReading)
     {
         standoffController.processDistanceReading(distanceReading);
         // Uncomment this to run
-        // chassis.setMotorEfforts(standoffController.leftEffort, standoffController.rightEffort);
+        chassis.setMotorEfforts(standoffController.leftEffort, standoffController.rightEffort);
     }   
 
     Serial.print('\n');
