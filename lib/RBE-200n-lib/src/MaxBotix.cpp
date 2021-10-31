@@ -158,7 +158,7 @@ void MaxBotix::MB_ISR(void)
     else                        //transitioned to LOW
     {
         pulseEnd = micros();
-        state |= ECHO_RECD;
+        state |= ECHO_RECD; //sets new value to true
     } 
 }
 
@@ -172,10 +172,10 @@ void MaxBotix::MB_ISR(void)
 bool MaxBotix::getDistance(float& distance)
 {
     // //transfer function: 0.798* + -1.22
-    uint16_t adcReading = mb_ez1.readMCP3002(false); //gets adc reading
-    if(!(state & ADC_READ)){ //if the value is non zero then it is true
-        distance = (adcReading + 1.22)/0.798;
-        state |= ADC_READ; //sets value to we have read or true.
+    uint16_t pulseLen = mb_ez1.checkEcho(); //gets adc reading
+    if((state & ECHO_RECD)){ //if the value is non zero then it is true
+        distance = pulseLen; //(adcReading + 1.22)/0.798;
+        state &= ~ECHO_RECD; //sets value to we have read/false
         return true;
     }
     else

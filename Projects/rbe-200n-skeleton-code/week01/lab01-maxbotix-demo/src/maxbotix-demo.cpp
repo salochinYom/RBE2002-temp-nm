@@ -44,7 +44,10 @@ void loop()
     Serial.print((asciiResponse + 1)*2.5); //TODO: change this line to output distance in cm
     Serial.print(',');
 
-    uint32_t pulseLen = mb_ez1.checkEcho();
+    // float distance;
+    // mb_ez1.getDistance(distance); //creates varible to get distance
+   uint32_t pulseLen = mb_ez1.checkEcho();
+
     Serial.print(pulseLen);
     Serial.print(',');
     Serial.print((pulseLen + 46.5)/57.6); //TODO: change this line to output distance in cm
@@ -53,8 +56,8 @@ void loop()
     //passing true ignores the timer and forces a reading
     //from the datasheet, if the serial output is ready, the voltage is ready
     uint16_t adcReading = mb_ez1.readMCP3002(true);
-    float distance; //creates varible to get distance
-    mb_ez1.getDistance(distance); //sets distance through reference
+
+   // mb_ez1.getDistance(distance); //sets distance through reference
     Serial.print(adcReading); 
     Serial.print(',');
     Serial.print((adcReading + 1.22)/0.798); //TODO: change this line to output distance in cm
