@@ -57,7 +57,7 @@ void loop()
     mb_ez1.getDistance(distance); //sets distance through reference
     Serial.print(adcReading); 
     Serial.print(',');
-    Serial.print(distance); //TODO: change this line to output distance in cm
+    Serial.print((adcReading + 1.22)/0.798); //TODO: change this line to output distance in cm
     Serial.print('\n');
   }
 }

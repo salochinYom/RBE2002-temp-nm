@@ -97,6 +97,7 @@ uint16_t MaxBotix::readMCP3002(bool force)
     if((millis() - lastADCread >= 50) || force)
     {
         lastADCread = millis();
+  
 
         // This will command the MCP to take a reading on CH0
         // Figure 6.1 of the datasheet shows the bit arrangement
@@ -112,7 +113,7 @@ uint16_t MaxBotix::readMCP3002(bool force)
         //this line both sends the command to read AND retrieves the result
         //the leading bits are indeterminate and need to be stripped off
         uint16_t ADCvalue = SPI.transfer16(cmdByte) & 0x03ff;
-
+        
         //end communication
         digitalWrite(SS, HIGH); 
 
