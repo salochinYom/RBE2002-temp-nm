@@ -51,9 +51,9 @@ void Robot::handleIRPress(int16_t key)
             if(key == PREV)
             {
                 robotState = ROBOT_WALL_FOLLOWING;
-                float distanceReading = 0;
-                bool hasNewReading = mb_ez1.getDistance(distanceReading);
-                WallFollowingController.targetDistance = distanceReading;
+                // float distanceReading = 0;
+                // bool hasNewReading = mb_ez1.getDistance(distanceReading);
+                // WallFollowingController.targetDistance = distanceReading;
             }
             break;
         case ROBOT_STANDOFF:

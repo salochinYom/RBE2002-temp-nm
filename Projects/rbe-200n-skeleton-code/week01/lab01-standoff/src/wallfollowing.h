@@ -17,7 +17,7 @@ protected:
 
     PIDController pidwallFollowing;
     public:
-    wallFollowingController(void) : pidwallFollowing(0.005, 0.0005, 0.00025, 0.25) {} //TODO: edit gains
+    wallFollowingController(void) : pidwallFollowing(0.005,0,0.00025,0.25) {} //TODO: edit gains 0.005, 0.0005, 0.00025, 0.25
 
     void processDistanceReading(float distance);
     void handleKeyPress(int16_t key);
